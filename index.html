@@ -56,6 +56,8 @@ body::before{content:"";position:fixed;inset:0;background:url(assets/p2.jpg) cen
 #mpanel button.sel{background:var(--gold);color:#000;font-weight:700}
 .items{list-style:none;padding:0;font-size:14px;color:var(--mute)}.items li{padding-left:18px;position:relative;margin:3px 0}.items li:before{content:"✓";position:absolute;left:0;color:var(--gold)}
 .pban{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}.pban img{width:100%;height:230px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+.pban.full{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.pban.full img{height:320px;width:auto;max-width:100%}
+@media(max-width:600px){.pban.full img{height:auto;width:100%}}
 </style></head><body>
 <canvas id="bub"></canvas>
 <header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header>
@@ -131,11 +133,11 @@ draw();
 // ===== Premium packages (ceremony, wedding, graduation) =====
 const WN='Additional day GHS 550 · Extra pictures GHS 45 per picture';
 const HG=[
-{l:'Ceremony: Digital · Print · Frame',s:'Naming Ceremony',img:[],note:'Additional hardcopy print GHS 30 each.',k:[
+{l:'Ceremony: Digital · Print · Frame',s:'Naming Ceremony',img:['cer_twins.jpg','cer_family.jpg','cer_mom.jpg'],full:1,note:'Additional hardcopy print GHS 30 each.',k:[
 ['Digital Memories','2 hours coverage',['Professional naming ceremony photography coverage','30 professionally edited digital photos','Photos delivered online in soft copy'],750,550],
 ['Print & Keep','4 hours coverage',['Professional naming ceremony photography coverage','25 professionally edited digital photos','15 printed photographs'],1000,850],
 ['Premium Frame Package','6 hours coverage',['Professional naming ceremony photography coverage','40 professionally edited digital photos','15 printed photographs','2 framed photographs','Digital photos delivered online'],1500,1300]]},
-{l:'Ceremony: Simple · Standard · Deluxe',s:'Naming Ceremony',img:[],note:'Additional hardcopy print GHS 25 each.',k:[
+{l:'Ceremony: Simple · Standard · Deluxe',s:'Naming Ceremony',img:['cer_dad.jpg','cer_group.jpg'],full:1,note:'Additional hardcopy print GHS 25 each.',k:[
 ['Simple Ceremony','Up to 2 hours coverage',['5 hardcopy prints','8 softcopies (professionally edited)','1 photographer','Online delivery'],799,599],
 ['Standard Ceremony','Up to 4 hours coverage',['8 hardcopy prints','10 softcopies (professionally edited)','1 photographer','1 framed 16x20','Online delivery'],1399,899],
 ['Deluxe Ceremony','Full-day coverage',['13 hardcopy prints','15 softcopies (high-quality edit and finishing)','1 photographer','1 framed 16x20','Online delivery','1 minute trailer video'],2299,1599]]},
@@ -151,7 +153,7 @@ const HG=[
 ['Classic Love','Perfect for couples who want something sweet and simple',['Up to 8 hours coverage','100+ edited images online','Online delivery (Gallery/Drive)','1 photographer','1 location'],2499,1599],
 ['Elegant Moments','For couples who want a bit more flair and variety',['2 days coverage','250+ edited images','Pre-wedding photoshoot','Online delivery (Gallery/Drive)','3 framed 16x20','Thank you flyer','2 photobooks (Engagement & Wedding)','2 photographers','Free 3% discount for early booking'],9199,7499],
 ['Forever & Always (Premium)','A premium, pre-wedding experience that feels like a full feature',['1 day coverage','150+ edited images','Pre-wedding photoshoot','Online + USB delivery','2 framed 12x16','1 photobook','Up to 2 locations'],4199,3599]]},
-{l:'Graduation: Bronze · Silver · Gold',s:'Graduation',img:['grad2.jpg'],note:'Bookings should be made days prior to the shooting day.',k:[
+{l:'Graduation: Bronze · Silver · Gold',s:'Graduation',img:['grad3.jpg','grad2.jpg'],full:1,note:'Bookings should be made days prior to the shooting day.',k:[
 ['Bronze','',['5 retouched soft copies','Online delivery'],null,300],
 ['Silver','',['10 edited soft copies','1 Picture A3 frame','Online delivery'],null,500],
 ['Gold','',['15 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],null,700]]}];
@@ -159,7 +161,7 @@ const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' �
 const ALL=PK.concat(HP);let pg=0;
 function pdraw(){
   $('#pchips').innerHTML=HG.map((g,i)=>`<button class="chip ${i===pg?'on':''}" data-pc="${i}">${esc(g.l)}</button>`).join('');
-  const g=HG[pg];$('#pban').innerHTML=g.img.map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join('');$('#pnote').textContent=g.note;
+  const g=HG[pg];$('#pban').className='pban'+(g.full?' full':'');$('#pban').innerHTML=g.img.map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join('');$('#pnote').textContent=g.note;
   $('#pgrid').innerHTML=g.idx.map(k=>{const p=ALL[k],left=6-p.b,full=!left;
   return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3>${p.s?`<div class="inc">${esc(p.s)}</div>`:''}
   <ul class="items">${p.i.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
