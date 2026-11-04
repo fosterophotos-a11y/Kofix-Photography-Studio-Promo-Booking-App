@@ -58,9 +58,13 @@ body::before{content:"";position:fixed;inset:0;background:url(assets/p2.jpg) cen
 .pban{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}.pban img{width:100%;height:230px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
 .pban.full{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.pban.full img{height:320px;width:auto;max-width:100%}
 @media(max-width:600px){.pban.full img{height:auto;width:100%}}
+.cd{background:linear-gradient(90deg,#120e03,#2a2108,#120e03);border-top:1px solid var(--line);border-bottom:1px solid var(--gold);text-align:center;padding:6px 10px;color:var(--gold);font-size:12px;letter-spacing:.16em;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.cd .u{display:inline-block;min-width:52px;margin:0 2px;background:#000;border:1px solid var(--gold);border-radius:9px;padding:3px 6px;color:#f5f1e6;font-size:18px;font-weight:800;letter-spacing:0;line-height:1.1}
+.cd .u small{display:block;font-size:8px;color:var(--gold);letter-spacing:.2em;font-weight:700}
+@media(max-width:520px){.cd{font-size:10px;gap:6px}.cd .u{min-width:44px;font-size:16px}}
 </style></head><body>
 <canvas id="bub"></canvas>
-<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header>
+<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div><div class="cd" id="cd"></div></header>
 <div class="hero"><div class="bg"></div><canvas class="hb" id="hb"></canvas><div class="wrap"><img class="lg" src="assets/logo-light.png" alt="Kofix Photography Studio">
 <h1>Where We Bring <span>Every Memory</span> to Life.</h1><p>Limited promotional slots. Every package opens only <b>six</b> bookings — choose yours before it is full.</p>
 <a class="btn" href="#packages">View promo packages</a> <a class="btn ghost" href="#premium">Premium packages</a></div></div>
@@ -227,4 +231,14 @@ function bubbles(c,count,alpha,fixed){const x=c.getContext('2d');if(matchMedia('
     x.fillStyle=b.g?`rgba(212,175,55,${b.a*.35})`:`rgba(255,255,255,${b.a*.3})`;x.fill()});requestAnimationFrame(f)})()}
 bubbles($('#bub'),innerWidth<600?14:26,1,true);
 bubbles($('#hb'),innerWidth<600?8:14,.8,false);
+
+// ===== Promo countdown: starts Mon 9 Nov 2026 00:00 (Ghana time), runs 168 hours, ends Mon 16 Nov 2026 00:00 =====
+(function(){const PS=Date.UTC(2026,10,9,0,0,0),PE=PS+168*3600e3,el=document.getElementById('cd');if(!el)return;
+  const p2=n=>String(n).padStart(2,'0'),U=(v,l)=>`<span class="u">${v}<small>${l}</small></span>`;
+  function tick(){const n=Date.now();let t,lab,h;
+    if(n<PS){t=PS-n;lab='PROMO STARTS IN';const d=Math.floor(t/864e5);t-=d*864e5;h=U(d,'DAYS')+U(p2(Math.floor(t/36e5)),'HRS')+U(p2(Math.floor(t%36e5/6e4)),'MIN')+U(p2(Math.floor(t%6e4/1e3)),'SEC')}
+    else if(n<PE){t=PE-n;lab='PROMO ENDS IN';h=U(Math.floor(t/36e5),'HOURS')+U(p2(Math.floor(t%36e5/6e4)),'MIN')+U(p2(Math.floor(t%6e4/1e3)),'SEC')}
+    else{el.innerHTML='<span>Promo week has ended — thank you!</span>';clearInterval(iv);return}
+    el.innerHTML='<span>'+lab+'</span><span>'+h+'</span>'}
+  tick();const iv=setInterval(tick,1000)})();
 </script></body></html>
