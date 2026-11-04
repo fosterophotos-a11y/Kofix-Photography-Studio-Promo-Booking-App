@@ -62,9 +62,16 @@ body::before{content:"";position:fixed;inset:0;background:url(assets/p2.jpg) cen
 .cd .u{display:inline-block;min-width:52px;margin:0 2px;background:#000;border:1px solid var(--gold);border-radius:9px;padding:3px 6px;color:#f5f1e6;font-size:18px;font-weight:800;letter-spacing:0;line-height:1.1}
 .cd .u small{display:block;font-size:8px;color:var(--gold);letter-spacing:.2em;font-weight:700}
 @media(max-width:520px){.cd{font-size:10px;gap:6px}.cd .u{min-width:44px;font-size:16px}}
+header .btn{height:40px;padding:0 18px;border:1px solid var(--gold);display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;line-height:1;font-size:15px}
+header .btn.playing{background:rgba(212,175,55,.18)}
+@media(max-width:520px){header .btn{padding:0 14px;font-size:14px}}
+.cd{padding:4px 8px;font-size:10px;gap:6px;letter-spacing:.12em}
+.cd .u{min-width:40px;padding:2px 5px;font-size:14px;border-radius:7px}
+.cd .u small{font-size:7px}
+@media(max-width:520px){.cd{font-size:9px;gap:5px}.cd .u{min-width:36px;font-size:13px}}
 </style></head><body>
 <canvas id="bub"></canvas>
-<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div><div class="cd" id="cd"></div></header>
+<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header><div class="cd" id="cd"></div>
 <div class="hero"><div class="bg"></div><canvas class="hb" id="hb"></canvas><div class="wrap"><img class="lg" src="assets/logo-light.png" alt="Kofix Photography Studio">
 <h1>Where We Bring <span>Every Memory</span> to Life.</h1><p>Limited promotional slots. Every package opens only <b>six</b> bookings — choose yours before it is full.</p>
 <a class="btn" href="#packages">View promo packages</a> <a class="btn ghost" href="#premium">Premium packages</a></div></div>
@@ -213,7 +220,7 @@ function loop(){const T=TR[cur],dur=60/T.bpm/4;while(nextT<ac.currentTime+.15){p
 function start(i){ensure();clearInterval(tmr);cur=i;step=0;nextT=ac.currentTime+.05;tmr=setInterval(loop,30);localStorage.kofixTrack=i;panel()}
 function stop(){clearInterval(tmr);cur=-1;localStorage.kofixTrack='off';panel()}
 function panel(){$('#mpanel').innerHTML=TR.map((t,i)=>`<button class="${i===cur?'sel':''}" data-m="${i}">${i===cur?'▶ ':''}${t.n}</button>`).join('')+`<button class="${cur<0?'sel':''}" data-m="off">Music off</button>`;
-  $('#music').textContent=cur>=0?'♪ '+TR[cur].n:'♪ Music'}
+  $('#music').classList.toggle('playing',cur>=0)}
 $('#music').onclick=e=>{e.stopPropagation();$('#mpanel').classList.toggle('on')};
 $('#mpanel').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;b.dataset.m==='off'?stop():start(+b.dataset.m);$('#mpanel').classList.remove('on')};
 document.addEventListener('click',e=>{if(!e.target.closest('.mwrap'))$('#mpanel').classList.remove('on')});
