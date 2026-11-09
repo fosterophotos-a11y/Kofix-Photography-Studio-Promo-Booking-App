@@ -69,17 +69,23 @@ header .btn.playing{background:rgba(212,175,55,.18)}
 .cd .u{min-width:40px;padding:2px 5px;font-size:14px;border-radius:7px}
 .cd .u small{font-size:7px}
 @media(max-width:520px){.cd{font-size:9px;gap:5px}.cd .u{min-width:36px;font-size:13px}}
+.wopt{display:block;width:100%;margin:8px 0;padding:14px 16px;border-radius:12px;border:1px solid var(--gold);background:#111;color:#f5f1e6;font-size:16px;text-align:left;cursor:pointer}.wopt:hover,.wopt:active{background:var(--gold);color:#000}
+.wskip{display:block;margin:14px auto 0;background:none;border:0;color:var(--mute);text-decoration:underline;cursor:pointer;font-size:14px}.wst{color:var(--gold);font-size:12px;letter-spacing:.2em;font-weight:700}
 </style></head><body>
 <canvas id="bub"></canvas>
 <header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header><div class="cd" id="cd"></div>
 <div class="hero"><div class="bg"></div><canvas class="hb" id="hb"></canvas><div class="wrap"><img class="lg" src="assets/logo-light.png" alt="Kofix Photography Studio">
 <h1>Where We Bring <span>Every Memory</span> to Life.</h1><p>Limited promotional slots. Every package opens only <b>six</b> bookings — choose yours before it is full.</p>
-<a class="btn" href="#packages">View promo packages</a> <a class="btn ghost" href="#premium">Premium packages</a></div></div>
+<a class="btn" href="#packages">View promo packages</a> <a class="btn ghost" href="#premium">Premium packages</a> <button class="btn ghost" id="guideBtn" style="margin-top:8px">▶ Guide to book</button></div></div>
 <section id="packages"><div class="wrap"><h2>Promotional Packages</h2><p class="sub">Each package has its own six slots.</p><div class="chips" id="chips"></div><div class="grid" id="grid"></div></div></section>
 <section id="premium"><div class="wrap"><h2>Premium Packages</h2><p class="sub">Ceremonies, weddings and graduation — full-coverage packages. Each package has its own six slots.</p>
 <div class="chips" id="pchips"></div><div class="pban" id="pban"></div><p class="sub" id="pnote"></p><div class="grid" id="pgrid"></div></div></section>
 <section><div class="wrap"><h2>Our Work</h2><div class="band"><img loading="lazy" src="assets/baby.jpg" alt=""><img loading="lazy" src="assets/wedding.jpg" alt=""><img loading="lazy" src="assets/grad.jpg" alt=""><img loading="lazy" src="assets/boy.jpg" alt=""><img loading="lazy" src="assets/p3.jpg" alt=""></div></div></section>
-<footer><img src="assets/mark.png" height="40" alt=""><p>Kofix Photography Studio — Where We Bring Every Memory to Life.</p><p><a style="color:var(--gold)" href="https://wa.me/233534349054">WhatsApp 0534349054</a></p><p>© 2026 Kofix Photography Studio. All rights reserved.</p><p>Website: <a id="site" style="color:var(--gold)"></a></p></footer>
+<footer><img src="assets/mark.png" height="40" alt=""><p>Kofix Photography Studio — Where We Bring Every Memory to Life.</p><p><a style="color:var(--gold)" href="https://wa.me/233534349054">WhatsApp 0534349054</a></p><p>Official website: <a style="color:var(--gold)" href="https://kofixphotographystudiogh.netlify.app">kofixphotographystudiogh.netlify.app</a></p><p>© 2026 Kofix Photography Studio. All rights reserved.</p></footer>
+<div class="modal" id="gmodal"><div class="sheet" style="max-width:380px;text-align:center"><h2 style="font-size:20px">How to Book — Quick Guide</h2>
+<video id="gv" controls playsinline preload="none" poster="assets/guide-poster.jpg" style="display:block;margin:10px auto;max-height:64vh;max-width:100%;border-radius:14px;border:1px solid var(--gold);background:#000"></video>
+<button class="btn ghost" id="gclose" style="width:100%">Close</button></div></div>
+<div class="modal" id="wel"><div class="sheet" id="wsheet"></div></div>
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 <script>
 /* ===== OWNER: HOW TO UPDATE SLOTS =====
@@ -167,7 +173,7 @@ const HG=[
 {l:'Graduation: Bronze · Silver · Gold',s:'Graduation',img:['grad3.jpg','grad2.jpg'],full:1,note:'Bookings should be made days prior to the shooting day.',k:[
 ['Bronze','',['10 retouched soft copies','Online delivery'],700,550],
 ['Silver','',['15 edited soft copies','1 Picture A3 frame','Online delivery'],950,750],
-['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],null,1199]]}];
+['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],1500,1199]]}];
 const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' — '+t;g.idx.push(PK.length+HP.length);HP.push({c:g.l,n,s,i,r,p,t:g.note,b:Math.min(6,BOOKED[n]||0)})})});
 const ALL=PK.concat(HP);let pg=0;
 function pdraw(){
@@ -182,7 +188,6 @@ function pdraw(){
   <button class="btn" data-b="${k}" ${full?'disabled':''}>${full?'Sold out':'Book this package'}</button></div>`}).join('')}
 document.addEventListener('click',e=>{const c=e.target.closest('[data-pc]');if(c){pg=+c.dataset.pc;pdraw()}});
 pdraw();
-const sl=$('#site');sl.href=location.origin;sl.textContent=location.host;
 
 // ===== Background music: 5 smooth, cool instrumental styles (generated in the browser) =====
 const N=m=>440*Math.pow(2,(m-69)/12);
@@ -248,4 +253,34 @@ bubbles($('#hb'),innerWidth<600?8:14,.8,false);
     else{el.innerHTML='<span>Promo week has ended — thank you!</span>';clearInterval(iv);return}
     el.innerHTML='<span>'+lab+'</span><span>'+h+'</span>'}
   tick();const iv=setInterval(tick,1000)})();
+
+// ===== Welcome: 2 quick taps that take the visitor straight to the right packages (shown once per visit) =====
+(function(){const so=(a,b)=>({q:'Studio or Outdoor?',o:[['Studio',['c',a]],['Outdoor',['c',b]]]});
+  const Q=[
+   ['Wedding & Engagement',{q:'What do you need?',o:[['Pictures & Video',['p',2]],['Video only',['p',3]],['Pictures only',['p',4]]]}],
+   ['Baby Naming Ceremony',{q:'Choose a package style',o:[['Digital · Print · Frame',['p',0]],['Simple · Standard · Deluxe',['p',1]]]}],
+   ['Graduation',{q:'What would you like?',o:[['Bronze · Silver · Gold',['p',5]],['Studio shoot',['c','Graduation Shot Studio']],['Outdoor shoot',['c','Graduation Shot Outdoor']]]}],
+   ['Maternity',so('Maternity Shoot Studio','Maternity Shoot Outdoor')],
+   ['Baby / Kids shoot',so('Studio Babies Shoot','Babies Shoot Outdoor')],
+   ['Family',so('Family Shot Studio','Family Shot Outdoor')],
+   ['Pre-Wedding',so('Pre-Wedding Shoot Studio','Pre-Wedding Shoot Outdoor')],
+   ['Portrait / Birthday / Other',so('Studio Shoot','Outdoor Shoot')]];
+  const W=$('#wel'),S=$('#wsheet');
+  const close=()=>{W.classList.remove('on');try{sessionStorage.kofixWel='1'}catch(e){}};
+  const go=a=>{close();if(a[0]==='c'){cat=a[1];draw();document.querySelector('#packages').scrollIntoView({behavior:'smooth'})}else{pg=a[1];pdraw();document.querySelector('#premium').scrollIntoView({behavior:'smooth'})}};
+  function step2(n){S.innerHTML=`<div class="wst">STEP 2 OF 2</div><h2>${esc(n.q)}</h2>`+n.o.map((o,i)=>`<button class="wopt" data-o="${i}">${esc(o[0])}</button>`).join('')+'<button class="wskip" id="wsk">Skip — show me everything</button>';
+    S.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>go(n.o[+b.dataset.o][1]));$('#wsk').onclick=close}
+  function step1(){S.innerHTML='<div class="wst">STEP 1 OF 2</div><h2>Welcome to Kofix Photography Studio</h2><p class="sub">What are you booking for?</p>'+Q.map((q,i)=>`<button class="wopt" data-q="${i}">${esc(q[0])}</button>`).join('')+'<button class="wskip" id="wsk">Skip — show me everything</button>';
+    S.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>step2(Q[+b.dataset.q][1]));$('#wsk').onclick=close}
+  let seen=false;try{seen=!!sessionStorage.kofixWel}catch(e){}
+  if(!seen){step1();W.classList.add('on')}})();
+
+// ===== Guide to book: opens the voice-over video; site music pauses while it plays =====
+(function(){const M=$('#gmodal'),V=$('#gv');let was=-1;
+  function open(){M.classList.add('on');if(!V.getAttribute('src'))V.src='assets/how-to-book.mp4';
+    was=cur;if(cur>=0){clearInterval(tmr);if(ac)ac.suspend()}
+    const p=V.play();if(p&&p.catch)p.catch(()=>{})}
+  function shut(){V.pause();M.classList.remove('on');
+    if(was>=0&&ac){ac.resume();nextT=ac.currentTime+.05;tmr=setInterval(loop,30)}was=-1}
+  $('#guideBtn').onclick=open;$('#gclose').onclick=shut;M.addEventListener('click',e=>{if(e.target===M)shut()})})();
 </script></body></html>
