@@ -173,7 +173,7 @@ const HG=[
 {l:'Graduation: Bronze · Silver · Gold',s:'Graduation',img:['grad3.jpg','grad2.jpg'],full:1,note:'Bookings should be made days prior to the shooting day.',k:[
 ['Bronze','',['10 retouched soft copies','Online delivery'],700,550],
 ['Silver','',['15 edited soft copies','1 Picture A3 frame','Online delivery'],950,750],
-['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],1500,1199]]}];
+['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],null,1199]]}];
 const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' — '+t;g.idx.push(PK.length+HP.length);HP.push({c:g.l,n,s,i,r,p,t:g.note,b:Math.min(6,BOOKED[n]||0)})})});
 const ALL=PK.concat(HP);let pg=0;
 function pdraw(){
