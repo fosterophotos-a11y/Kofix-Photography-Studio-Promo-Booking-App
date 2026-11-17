@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Kofix Photography Studio — Promo Bookings</title><meta name="theme-color" content="#000000"><link rel="icon" href="assets/mark.png">
+<title>Kofix Photography Studio — Book a Shoot</title><meta name="theme-color" content="#000000"><link rel="icon" href="assets/mark.png">
 <style>
 :root{--gold:#d4af37;--gold2:#f3d97a;--bg:#050505;--card:#111;--line:#2a2412;--txt:#f5f1e6;--mute:#a79f88}
 *{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
@@ -14,7 +14,7 @@ header img{height:34px}header nav{margin-left:auto;display:flex;gap:6px;align-it
 .btn.ghost{background:none;color:var(--gold);border:1px solid var(--gold)}
 .btn[disabled]{background:#2b2b2b;color:#888;cursor:not-allowed}
 .hero{position:relative;min-height:78vh;display:grid;align-items:center;overflow:hidden}
-.hero .bg{position:absolute;inset:0;background:linear-gradient(90deg,#000 35%,#0009 70%,#0004),url(assets/p4.jpg) right 20%/cover}
+.hero .bg{position:absolute;inset:0;background:linear-gradient(90deg,#000 35%,#0009 70%,#0004),url(assets/hero.jpg) right 15%/cover}
 .hero .wrap{position:relative;padding-top:50px;padding-bottom:50px}
 .hero img.lg{width:min(320px,70%);margin-bottom:18px}
 .hero h1{font-size:clamp(30px,6vw,56px);line-height:1.1;max-width:640px}
@@ -48,7 +48,7 @@ label{font-size:13px;color:var(--mute)}
 footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);text-align:center;font-size:14px}
 #toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--gold);color:#000;padding:10px 18px;border-radius:999px;display:none;z-index:99;font-weight:600}
 header img{height:34px}
-body::before{content:"";position:fixed;inset:0;background:url(assets/p2.jpg) center/cover;opacity:.12;filter:blur(3px);z-index:0;pointer-events:none}
+body::before{content:"";position:fixed;inset:0;background:url(assets/back.jpg) center/cover;opacity:.12;filter:blur(3px);z-index:0;pointer-events:none}
 .hero .hb{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero,section,footer{position:relative;z-index:1}#bub{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .mwrap{position:relative}#mpanel{display:none;position:absolute;right:0;top:46px;background:#0e0e0e;border:1px solid var(--gold);border-radius:14px;padding:8px;min-width:200px;z-index:30}
@@ -58,42 +58,26 @@ body::before{content:"";position:fixed;inset:0;background:url(assets/p2.jpg) cen
 .pban{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}.pban img{width:100%;height:230px;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
 .pban.full{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}.pban.full img{height:320px;width:auto;max-width:100%}
 @media(max-width:600px){.pban.full img{height:auto;width:100%}}
-.cd{background:linear-gradient(90deg,#120e03,#2a2108,#120e03);border-top:1px solid var(--line);border-bottom:1px solid var(--gold);text-align:center;padding:6px 10px;color:var(--gold);font-size:12px;letter-spacing:.16em;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.cd .u{display:inline-block;min-width:52px;margin:0 2px;background:#000;border:1px solid var(--gold);border-radius:9px;padding:3px 6px;color:#f5f1e6;font-size:18px;font-weight:800;letter-spacing:0;line-height:1.1}
-.cd .u small{display:block;font-size:8px;color:var(--gold);letter-spacing:.2em;font-weight:700}
-@media(max-width:520px){.cd{font-size:10px;gap:6px}.cd .u{min-width:44px;font-size:16px}}
 header .btn{height:40px;padding:0 18px;border:1px solid var(--gold);display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;line-height:1;font-size:15px}
 header .btn.playing{background:rgba(212,175,55,.18)}
 @media(max-width:520px){header .btn{padding:0 14px;font-size:14px}}
-.cd{padding:4px 8px;font-size:10px;gap:6px;letter-spacing:.12em}
-.cd .u{min-width:40px;padding:2px 5px;font-size:14px;border-radius:7px}
-.cd .u small{font-size:7px}
-@media(max-width:520px){.cd{font-size:9px;gap:5px}.cd .u{min-width:36px;font-size:13px}}
 .wopt{display:block;width:100%;margin:8px 0;padding:14px 16px;border-radius:12px;border:1px solid var(--gold);background:#111;color:#f5f1e6;font-size:16px;text-align:left;cursor:pointer}.wopt:hover,.wopt:active{background:var(--gold);color:#000}
 .wskip{display:block;margin:14px auto 0;background:none;border:0;color:var(--mute);text-decoration:underline;cursor:pointer;font-size:14px}.wst{color:var(--gold);font-size:12px;letter-spacing:.2em;font-weight:700}
+@media(max-width:700px){.hero .bg{background:linear-gradient(180deg,#0007 0%,#0003 35%,#000d 78%),url(assets/hero.jpg) center 10%/cover}}
 </style></head><body>
 <canvas id="bub"></canvas>
-<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header><div class="cd" id="cd"></div>
+<header><div class="wrap"><img src="assets/logo-light.png" alt="Kofix Photography Studio"><nav><div class="mwrap"><button class="btn ghost" id="music">♪ Music</button><div id="mpanel"></div></div><a class="btn" href="#packages">Book</a></nav></div></header>
 <div class="hero"><div class="bg"></div><canvas class="hb" id="hb"></canvas><div class="wrap"><img class="lg" src="assets/logo-light.png" alt="Kofix Photography Studio">
-<h1>Where We Bring <span>Every Memory</span> to Life.</h1><p>Limited promotional slots. Every package opens only <b>six</b> bookings — choose yours before it is full.</p>
-<a class="btn" href="#packages">View promo packages</a> <a class="btn ghost" href="#premium">Premium packages</a> <button class="btn ghost" id="guideBtn" style="margin-top:8px">▶ Guide to book</button></div></div>
-<section id="packages"><div class="wrap"><h2>Promotional Packages</h2><p class="sub">Each package has its own six slots.</p><div class="chips" id="chips"></div><div class="grid" id="grid"></div></div></section>
-<section id="premium"><div class="wrap"><h2>Premium Packages</h2><p class="sub">Ceremonies, weddings and graduation — full-coverage packages. Each package has its own six slots.</p>
+<h1>Where We Bring <span>Every Memory</span> to Life.</h1><p>Choose your package and book instantly on WhatsApp.</p>
+<a class="btn" href="#packages">View packages</a> <a class="btn ghost" href="#premium">Premium packages</a></div></div>
+<section id="packages"><div class="wrap"><h2>Our Packages</h2><p class="sub">Pick a category, choose a package and tap Book.</p><div class="chips" id="chips"></div><div class="pban" id="cban"></div><p class="sub" id="cnote"></p><div class="grid" id="grid"></div></div></section>
+<section id="premium"><div class="wrap"><h2>Premium Packages</h2><p class="sub">Ceremonies, weddings and graduation — full-coverage packages.</p>
 <div class="chips" id="pchips"></div><div class="pban" id="pban"></div><p class="sub" id="pnote"></p><div class="grid" id="pgrid"></div></div></section>
 <section><div class="wrap"><h2>Our Work</h2><div class="band"><img loading="lazy" src="assets/baby.jpg" alt=""><img loading="lazy" src="assets/wedding.jpg" alt=""><img loading="lazy" src="assets/grad.jpg" alt=""><img loading="lazy" src="assets/boy.jpg" alt=""><img loading="lazy" src="assets/p3.jpg" alt=""></div></div></section>
 <footer><img src="assets/mark.png" height="40" alt=""><p>Kofix Photography Studio — Where We Bring Every Memory to Life.</p><p><a style="color:var(--gold)" href="https://wa.me/233534349054">WhatsApp 0534349054</a></p><p>Official website: <a style="color:var(--gold)" href="https://kofixphotographystudiogh.netlify.app">kofixphotographystudiogh.netlify.app</a></p><p>© 2026 Kofix Photography Studio. All rights reserved.</p></footer>
-<div class="modal" id="gmodal"><div class="sheet" style="max-width:380px;text-align:center"><h2 style="font-size:20px">How to Book — Quick Guide</h2>
-<video id="gv" controls playsinline preload="none" poster="assets/guide-poster.jpg" style="display:block;margin:10px auto;max-height:64vh;max-width:100%;border-radius:14px;border:1px solid var(--gold);background:#000"></video>
-<button class="btn ghost" id="gclose" style="width:100%">Close</button></div></div>
 <div class="modal" id="wel"><div class="sheet" id="wsheet"></div></div>
 <div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
 <script>
-/* ===== OWNER: HOW TO UPDATE SLOTS =====
-   When a booking is confirmed, add 1 to that package below. Example: "Studio Shoot — 5 Shoots": 2
-   At 6 the package shows PROMO FULL automatically. Packages not listed count as 0. ===== */
-const BOOKED = {
-  // "Studio Shoot — 5 Shoots": 0,
-};
 const WA='https://wa.me/233534349054';
 const T='Any additional outfit beyond the package limit costs GHS 20 per outfit.';
 const D=[
@@ -109,22 +93,25 @@ const D=[
 ["Maternity Shoot Outdoor",[[4,"1 outfit",350,280],[8,"2 outfits",650,450],[11,"3 outfits",800,740],[13,"1 frame 12x16",1100,880]]],
 ["Graduation Shot Studio",[[4,"",300,240],[6,"",400,320],[8,"",750,580],[10,"",850,740]]],
 ["Graduation Shot Outdoor",[[6,"",400,320],[11,"",560,450],[13,"",860,690],[15,"",1000,800]]]];
-const PK=[];D.forEach(([c,t])=>t.forEach(([s,i,r,p])=>{const n=c+" — "+s+" Shoots";PK.push({c,n,s,i,r,p,b:Math.min(6,BOOKED[n]||0)})}));
+const PK=[];D.forEach(([c,t])=>t.forEach(([s,i,r,p])=>{const n=c+" — "+s+" Shoots";PK.push({c,n,s,i,r,p})}));
 const $=q=>document.querySelector(q),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),G=n=>'GHS '+n.toLocaleString('en-GH');
+const FR=[['12 x 16',220],['15 x 19',270],['16 x 20',320],['20 x 24',490],['20 x 30',590],['24 x 30',660],['24 x 36',750],['36 x 46',900],['3 in 1 split',400],['5 in 1 split',630]];
+FR.forEach(([z,pr])=>PK.push({c:'Frames',n:'Frame — '+z,s:'',i:'',r:pr,p:pr,fr:1,sub:z+' framed print',t:'Free delivery to your door.'}));
 let cat='All';
+const CP={'Studio Shoot':['st1.jpg','st2.jpg','cake.jpg'],'Outdoor Shoot':['out1.jpg','back.jpg'],'Studio Babies Shoot':['kid1.jpg','baby.jpg'],'Babies Shoot Outdoor':['boy.jpg','kid1.jpg'],'Pre-Wedding Shoot Studio':['bride.jpg','wed_walk.jpg'],'Pre-Wedding Shoot Outdoor':['wed_walk.jpg','wed_stairs.jpg'],'Family Shot Studio':['cer_family.jpg'],'Family Shot Outdoor':['cer_group.jpg'],'Maternity Shoot Studio':['mat1.jpg','mat2.jpg'],'Maternity Shoot Outdoor':['mat1.jpg','mat2.jpg'],'Graduation Shot Studio':['grad3.jpg','grad2.jpg'],'Graduation Shot Outdoor':['grad.jpg','grad3.jpg']};
+const CN={'Frames':'We frame your best moments · FREE delivery to your door'};
 function draw(){
   $('#chips').innerHTML=['All',...new Set(PK.map(p=>p.c))].map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
-  $('#grid').innerHTML=PK.map((p,k)=>({p,k})).filter(x=>cat==='All'||x.p.c===cat).map(({p,k})=>{const left=6-p.b,full=!left;
-  return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3><div class="inc">${p.s} shoots${p.i?' · '+p.i:''}</div>
-  <div class="price">${G(p.p)}${p.p<p.r?`<s>${G(p.r)}</s>`:''}</div>
-  <div class="bar">${[0,1,2,3,4,5].map(i=>`<i class="${i<p.b?'f':''}"></i>`).join('')}</div>
-  ${full?'<div class="full">PROMO FULL — ALL 6 SLOTS BOOKED</div>':`<div class="slots">${p.b} of 6 promotional slots booked — ${left} remaining</div>`}
-  <button class="btn" data-b="${k}" ${full?'disabled':''}>${full?'Sold out':'Book this package'}</button></div>`}).join('')}
+  const ph=cat!=='All'&&CP[cat];$('#cban').className='pban'+(ph?' full':'');$('#cban').innerHTML=ph?CP[cat].map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join(''):'';$('#cnote').textContent=CN[cat]||'';
+  $('#grid').innerHTML=PK.map((p,k)=>({p,k})).filter(x=>cat==='All'||x.p.c===cat).map(({p,k})=>{
+  return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3><div class="inc">${p.fr?esc(p.sub):p.s+' shoots'+(p.i?' · '+p.i:'')}</div>
+  <div class="price">${G(p.r)}</div>
+  <button class="btn" data-b="${k}">Book this package</button></div>`}).join('')}
 document.addEventListener('click',e=>{const c=e.target.closest('[data-c]');if(c){cat=c.dataset.c;draw()}
   const b=e.target.closest('[data-b]');if(b&&!b.disabled)form(+b.dataset.b);if(e.target.id==='modal')$('#modal').classList.remove('on')});
 function form(k){const p=ALL[k],today=new Date().toISOString().slice(0,10);
-  $('#sheet').innerHTML=`<h2>${esc(p.n)}</h2><div class="price">${G(p.p)}</div><div class="note"><b>Terms:</b> ${p.t||T}</div>
-  <div class="note">Your slot is confirmed only after Kofix verifies your payment on WhatsApp. Opening WhatsApp does not confirm a booking.</div>
+  $('#sheet').innerHTML=`<h2>${esc(p.n)}</h2><div class="price">${G(p.r)}</div><div class="note"><b>Terms:</b> ${p.t||T}</div>
+  <div class="note">Your booking is confirmed only after Kofix verifies your payment on WhatsApp. Opening WhatsApp does not confirm a booking.</div>
   <label>Full name *</label><input id="n"><label>WhatsApp / phone number *</label><input id="ph" inputmode="tel">
   <label>Preferred shoot date</label><input id="d" type="date" min="${today}"><label>Preferred location</label><input id="l">
   <label>Additional notes</label><textarea id="nt" rows="2"></textarea><div class="err" id="er"></div>
@@ -133,19 +120,18 @@ function form(k){const p=ALL[k],today=new Date().toISOString().slice(0,10);
   $('#go').onclick=()=>{const n=$('#n').value.trim(),ph=$('#ph').value.trim();
     if(n.length<2||!/^\+?[\d\s-]{9,18}$/.test(ph)){$('#er').textContent='Please enter your name and a valid phone number.';return}
     const ref='KPS-'+Math.random().toString(36).slice(2,8).toUpperCase();
-    const m=`Hello Kofix Photography Studio, I want to book a promotional photography package.
+    const m=`Hello Kofix Photography Studio, I want to book a photography package.
 Customer Name: ${n}
 Phone Number: ${ph}
 Selected Package: ${p.n}
 Booking Reference: ${ref}
-Assigned Slot: Pending — to be confirmed by Kofix
 Preferred Date: ${$('#d').value||'Not specified'}
 Location: ${$('#l').value.trim()||'Not specified'}
 Notes: ${$('#nt').value.trim()||'None'}
 Payment Status: Not paid yet (pending)
 Please confirm my booking and provide the payment instructions.`;
     window.open(WA+'?text='+encodeURIComponent(m),'_blank')||(location.href=WA+'?text='+encodeURIComponent(m));
-    $('#sheet').innerHTML=`<h2>Almost done</h2><div class="note">Reference: <b style="color:var(--gold2)">${ref}</b>\nPackage: ${esc(p.n)}\nStatus: Pending — not confirmed yet</div><p class="sub">Send the WhatsApp message to finish. Your slot is confirmed after we verify payment.</p><button class="btn" style="width:100%" onclick="$('#modal').classList.remove('on')">Close</button>`}}
+    $('#sheet').innerHTML=`<h2>Almost done</h2><div class="note">Reference: <b style="color:var(--gold2)">${ref}</b>\nPackage: ${esc(p.n)}\nStatus: Pending — not confirmed yet</div><p class="sub">Send the WhatsApp message to finish. Your booking is confirmed after we verify payment.</p><button class="btn" style="width:100%" onclick="$('#modal').classList.remove('on')">Close</button>`}}
 draw();
 // ===== Premium packages (ceremony, wedding, graduation) =====
 const WN='Additional day GHS 550 · Extra pictures GHS 45 per picture';
@@ -173,19 +159,17 @@ const HG=[
 {l:'Graduation: Bronze · Silver · Gold',s:'Graduation',img:['grad3.jpg','grad2.jpg'],full:1,note:'Bookings should be made days prior to the shooting day.',k:[
 ['Bronze','',['10 retouched soft copies','Online delivery'],700,550],
 ['Silver','',['15 edited soft copies','1 Picture A3 frame','Online delivery'],950,750],
-['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],null,1199]]}];
-const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' — '+t;g.idx.push(PK.length+HP.length);HP.push({c:g.l,n,s,i,r,p,t:g.note,b:Math.min(6,BOOKED[n]||0)})})});
+['Gold','',['20 soft copies','1 Picture A3 frame','30 seconds video','Online delivery'],1500,1199]]}];
+const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' — '+t;g.idx.push(PK.length+HP.length);HP.push({c:g.l,n,s,i,r,p,t:g.note})})});
 const ALL=PK.concat(HP);let pg=0;
 function pdraw(){
   $('#pchips').innerHTML=HG.map((g,i)=>`<button class="chip ${i===pg?'on':''}" data-pc="${i}">${esc(g.l)}</button>`).join('');
   const g=HG[pg];$('#pban').className='pban'+(g.full?' full':'');$('#pban').innerHTML=g.img.map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join('');$('#pnote').textContent=g.note;
-  $('#pgrid').innerHTML=g.idx.map(k=>{const p=ALL[k],left=6-p.b,full=!left;
+  $('#pgrid').innerHTML=g.idx.map(k=>{const p=ALL[k];
   return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3>${p.s?`<div class="inc">${esc(p.s)}</div>`:''}
   <ul class="items">${p.i.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
-  <div class="price">${G(p.p)}${p.r?`<s>${G(p.r)}</s>`:''}</div>
-  <div class="bar">${[0,1,2,3,4,5].map(i=>`<i class="${i<p.b?'f':''}"></i>`).join('')}</div>
-  ${full?'<div class="full">PROMO FULL — ALL 6 SLOTS BOOKED</div>':`<div class="slots">${p.b} of 6 promotional slots booked — ${left} remaining</div>`}
-  <button class="btn" data-b="${k}" ${full?'disabled':''}>${full?'Sold out':'Book this package'}</button></div>`}).join('')}
+  <div class="price">${G(p.r)}</div>
+  <button class="btn" data-b="${k}">Book this package</button></div>`}).join('')}
 document.addEventListener('click',e=>{const c=e.target.closest('[data-pc]');if(c){pg=+c.dataset.pc;pdraw()}});
 pdraw();
 
@@ -244,16 +228,6 @@ function bubbles(c,count,alpha,fixed){const x=c.getContext('2d');if(matchMedia('
 bubbles($('#bub'),innerWidth<600?14:26,1,true);
 bubbles($('#hb'),innerWidth<600?8:14,.8,false);
 
-// ===== Promo countdown: starts Mon 9 Nov 2026 00:00 (Ghana time), runs 168 hours, ends Mon 16 Nov 2026 00:00 =====
-(function(){const PS=Date.UTC(2026,10,9,0,0,0),PE=PS+168*3600e3,el=document.getElementById('cd');if(!el)return;
-  const p2=n=>String(n).padStart(2,'0'),U=(v,l)=>`<span class="u">${v}<small>${l}</small></span>`;
-  function tick(){const n=Date.now();let t,lab,h;
-    if(n<PS){t=PS-n;lab='PROMO STARTS IN';const d=Math.floor(t/864e5);t-=d*864e5;h=U(d,'DAYS')+U(p2(Math.floor(t/36e5)),'HRS')+U(p2(Math.floor(t%36e5/6e4)),'MIN')+U(p2(Math.floor(t%6e4/1e3)),'SEC')}
-    else if(n<PE){t=PE-n;lab='PROMO ENDS IN';h=U(Math.floor(t/36e5),'HOURS')+U(p2(Math.floor(t%36e5/6e4)),'MIN')+U(p2(Math.floor(t%6e4/1e3)),'SEC')}
-    else{el.innerHTML='<span>Promo week has ended — thank you!</span>';clearInterval(iv);return}
-    el.innerHTML='<span>'+lab+'</span><span>'+h+'</span>'}
-  tick();const iv=setInterval(tick,1000)})();
-
 // ===== Welcome: 2 quick taps that take the visitor straight to the right packages (shown once per visit) =====
 (function(){const so=(a,b)=>({q:'Studio or Outdoor?',o:[['Studio',['c',a]],['Outdoor',['c',b]]]});
   const Q=[
@@ -264,7 +238,8 @@ bubbles($('#hb'),innerWidth<600?8:14,.8,false);
    ['Baby / Kids shoot',so('Studio Babies Shoot','Babies Shoot Outdoor')],
    ['Family',so('Family Shot Studio','Family Shot Outdoor')],
    ['Pre-Wedding',so('Pre-Wedding Shoot Studio','Pre-Wedding Shoot Outdoor')],
-   ['Portrait / Birthday / Other',so('Studio Shoot','Outdoor Shoot')]];
+   ['Portrait / Birthday / Other',so('Studio Shoot','Outdoor Shoot')],
+   ['Frames & Prints',{q:'Frames',o:[['See all frame sizes and prices',['c','Frames']]]}]];
   const W=$('#wel'),S=$('#wsheet');
   const close=()=>{W.classList.remove('on');try{sessionStorage.kofixWel='1'}catch(e){}};
   const go=a=>{close();if(a[0]==='c'){cat=a[1];draw();document.querySelector('#packages').scrollIntoView({behavior:'smooth'})}else{pg=a[1];pdraw();document.querySelector('#premium').scrollIntoView({behavior:'smooth'})}};
@@ -275,12 +250,4 @@ bubbles($('#hb'),innerWidth<600?8:14,.8,false);
   let seen=false;try{seen=!!sessionStorage.kofixWel}catch(e){}
   if(!seen){step1();W.classList.add('on')}})();
 
-// ===== Guide to book: opens the voice-over video; site music pauses while it plays =====
-(function(){const M=$('#gmodal'),V=$('#gv');let was=-1;
-  function open(){M.classList.add('on');if(!V.getAttribute('src'))V.src='assets/how-to-book.mp4';
-    was=cur;if(cur>=0){clearInterval(tmr);if(ac)ac.suspend()}
-    const p=V.play();if(p&&p.catch)p.catch(()=>{})}
-  function shut(){V.pause();M.classList.remove('on');
-    if(was>=0&&ac){ac.resume();nextT=ac.currentTime+.05;tmr=setInterval(loop,30)}was=-1}
-  $('#guideBtn').onclick=open;$('#gclose').onclick=shut;M.addEventListener('click',e=>{if(e.target===M)shut()})})();
 </script></body></html>
