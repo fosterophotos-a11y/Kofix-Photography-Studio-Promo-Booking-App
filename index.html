@@ -81,7 +81,7 @@ header .btn.playing{background:rgba(212,175,55,.18)}
 const WA='https://wa.me/233534349054';
 const T='Any additional outfit beyond the package limit costs GHS 20 per outfit.';
 const D=[
-["Studio Shoot",[[5,"1 outfit",300,200],[8,"2 outfits",400,320],[10,"3 outfits",550,440],[13,"4 outfits",750,600]]],
+["Studio Shoot",[[5,"1 outfit",350,200],[8,"2 outfits",450,320],[10,"3 outfits",550,440],[13,"4 outfits",750,600]]],
 ["Outdoor Shoot",[[5,"1 outfit",500,400],[10,"2 outfits",700,560],[12,"3 outfits",900,720],[15,"4 outfits",1200,960]]],
 ["Studio Babies Shoot",[[4,"1 outfit",320,270],[8,"2 outfits",400,280],[10,"3 outfits",550,440],[13,"1 frame 12x16",750,600]]],
 ["Babies Shoot Outdoor",[[4,"1 outfit",350,280],[8,"2 outfits",500,350],[11,"3 outfits",800,740],[15,"1 frame 12x16",1200,960]]],
@@ -98,7 +98,7 @@ const $=q=>document.querySelector(q),esc=s=>String(s??'').replace(/[&<>"']/g,c=>
 const FR=[['12 x 16',220],['15 x 19',270],['16 x 20',320],['20 x 24',490],['20 x 30',590],['24 x 30',660],['24 x 36',750],['36 x 46',900],['3 in 1 split',400],['5 in 1 split',630]];
 FR.forEach(([z,pr])=>PK.push({c:'Frames',n:'Frame — '+z,s:'',i:'',r:pr,p:pr,fr:1,sub:z+' framed print',t:'Free delivery to your door.'}));
 let cat='All';
-const CP={'Studio Shoot':['st1.jpg','st2.jpg'],'Outdoor Shoot':['out1.jpg','back.jpg','cake.jpg'],'Studio Babies Shoot':['kid1.jpg'],'Babies Shoot Outdoor':['boy.jpg','baby.jpg'],'Pre-Wedding Shoot Studio':['bride.jpg','wed_walk.jpg'],'Pre-Wedding Shoot Outdoor':['wed_walk.jpg','wed_stairs.jpg'],'Family Shot Studio':['cer_family.jpg'],'Family Shot Outdoor':['cer_group.jpg'],'Maternity Shoot Studio':['mat1.jpg','mat2.jpg'],'Maternity Shoot Outdoor':['mat1.jpg','mat2.jpg'],'Graduation Shot Studio':['grad3.jpg','grad2.jpg'],'Graduation Shot Outdoor':['grad.jpg','grad3.jpg']};
+const CP={'Studio Shoot':['st1.jpg','st2.jpg','st3.jpg','cake2.jpg'],'Outdoor Shoot':['out1.jpg','back.jpg','cake.jpg','out3.jpg','out4.jpg'],'Studio Babies Shoot':['kid1.jpg','baby_a.jpg','baby_b.jpg','baby_c.jpg'],'Babies Shoot Outdoor':['boy.jpg','baby.jpg'],'Pre-Wedding Shoot Studio':['bride.jpg','wed_walk.jpg'],'Pre-Wedding Shoot Outdoor':['wed_walk.jpg','wed_stairs.jpg'],'Family Shot Studio':['cer_family.jpg'],'Family Shot Outdoor':['cer_group.jpg'],'Maternity Shoot Studio':['mat1.jpg','mat2.jpg'],'Maternity Shoot Outdoor':['mat1.jpg','mat2.jpg'],'Graduation Shot Studio':['grad3.jpg','grad2.jpg'],'Graduation Shot Outdoor':['grad.jpg','grad3.jpg']};
 const CN={'Frames':'We frame your best moments · FREE delivery to your door'};
 function draw(){
   $('#chips').innerHTML=['All',...new Set(PK.map(p=>p.c))].map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
