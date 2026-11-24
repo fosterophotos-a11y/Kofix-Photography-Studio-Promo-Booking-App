@@ -102,7 +102,7 @@ const CP={'Studio Shoot':['st1.jpg','st2.jpg','st3.jpg','cake2.jpg'],'Outdoor Sh
 const CN={'Frames':'We frame your best moments · FREE delivery to your door'};
 function draw(){
   $('#chips').innerHTML=['All',...new Set(PK.map(p=>p.c))].map(c=>`<button class="chip ${c===cat?'on':''}" data-c="${esc(c)}">${esc(c)}</button>`).join('');
-  const ph=cat!=='All'&&CP[cat];$('#cban').className='pban'+(ph?' full':'');$('#cban').innerHTML=ph?CP[cat].map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join(''):'';$('#cnote').textContent=CN[cat]||'';
+  const ph=cat!=='All'&&CP[cat];$('#cban').className='pban'+(ph?' full':'');$('#cban').innerHTML=ph?CP[cat].map(x=>`<img loading="lazy" src="assets/${x}" alt="" onerror="this.remove()">`).join(''):'';$('#cnote').textContent=CN[cat]||'';
   $('#grid').innerHTML=PK.map((p,k)=>({p,k})).filter(x=>cat==='All'||x.p.c===cat).map(({p,k})=>{
   return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3><div class="inc">${p.fr?esc(p.sub):p.s+' shoots'+(p.i?' · '+p.i:'')}</div>
   <div class="price">${G(p.r)}</div>
@@ -164,7 +164,7 @@ const HP=[];HG.forEach(g=>{g.idx=[];g.k.forEach(([t,s,i,r,p])=>{const n=g.s+' �
 const ALL=PK.concat(HP);let pg=0;
 function pdraw(){
   $('#pchips').innerHTML=HG.map((g,i)=>`<button class="chip ${i===pg?'on':''}" data-pc="${i}">${esc(g.l)}</button>`).join('');
-  const g=HG[pg];$('#pban').className='pban'+(g.full?' full':'');$('#pban').innerHTML=g.img.map(x=>`<img loading="lazy" src="assets/${x}" alt="">`).join('');$('#pnote').textContent=g.note;
+  const g=HG[pg];$('#pban').className='pban'+(g.full?' full':'');$('#pban').innerHTML=g.img.map(x=>`<img loading="lazy" src="assets/${x}" alt="" onerror="this.remove()">`).join('');$('#pnote').textContent=g.note;
   $('#pgrid').innerHTML=g.idx.map(k=>{const p=ALL[k];
   return `<div class="card"><div class="cat">${esc(p.c)}</div><h3>${esc(p.n)}</h3>${p.s?`<div class="inc">${esc(p.s)}</div>`:''}
   <ul class="items">${p.i.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
